@@ -5,13 +5,12 @@ import difflib
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-# Fix working directory to the script's folder
-os.chdir(os.path.dirname(__file__))
+# Define absolute path for movies.csv
+CSV_PATH = os.path.join(os.getcwd(), 'movie_recommender', 'movies.csv')
 
-# Load dataset
 @st.cache_data
 def load_data():
-    df = pd.read_csv('movies.csv')
+    df = pd.read_csv(CSV_PATH)
     df['overview'] = df['overview'].fillna('')
     return df
 
