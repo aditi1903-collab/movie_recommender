@@ -1,14 +1,17 @@
+import os
 import streamlit as st
 import pandas as pd
 import difflib
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
+# Fix working directory to the script's folder
+os.chdir(os.path.dirname(__file__))
+
 # Load dataset
 @st.cache_data
 def load_data():
-    df = pd.read_csv('movie_recommender/movies.csv')
-
+    df = pd.read_csv('movies.csv')
     df['overview'] = df['overview'].fillna('')
     return df
 
