@@ -6,11 +6,12 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 # Define absolute path for movies.csv
-CSV_PATH = os.path.join(os.getcwd(), 'movie_recommender', 'movies.csv')
+CSV_PATH = os.path.join(os.getcwd(), 'movies.csv')
+
 
 @st.cache_data
 def load_data():
-    df = pd.read_csv(CSV_PATH)
+    df = pd.read_csv('movies.csv')
     df['overview'] = df['overview'].fillna('')
     return df
 
